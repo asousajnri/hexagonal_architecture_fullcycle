@@ -1,4 +1,3 @@
-import pgp from "pg-promise";
 import ParkedCarRepositoryPort from "./ParkedCarRepositoryPort";
 
 export default class GetParkedCars {

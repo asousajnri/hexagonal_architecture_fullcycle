@@ -1,4 +1,3 @@
-import pgp from "pg-promise";
 import parkedCarRepositoryPort from "./ParkedCarRepositoryPort";
 
 export default class Checkout {

@@ -6,8 +6,8 @@ import ParkedCarMemoryRepository from "../src/ParkedCarMemoryRepositoryAdapter";
 import PostgreSQLAdapter from "../src/PostgreSQLAdapter";
 
 test("Deve fazer um checkin", async function () {
-	const connection = new PostgreSQLAdapter();
-	const parkedCarRepository = new ParkedCarDatabaseRepositoryAdapter(connection);
+	const db = new PostgreSQLAdapter();
+	const parkedCarRepository = new ParkedCarDatabaseRepositoryAdapter(db);
 	// const parkedCarRepository = new ParkedCarMemoryRepository();
 	const checkin = new Checkin(parkedCarRepository);
 	const inputCheckin = {
@@ -26,5 +26,5 @@ test("Deve fazer um checkin", async function () {
 	const ticket = await checkout.execute(inputCheckout);
 	expect(ticket.period).toBe(2);
 	expect(ticket.price).toBe(20);
-	await connection.close();
+	await db.close();
 });
