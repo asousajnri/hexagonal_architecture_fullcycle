@@ -2,12 +2,12 @@ import express, { Request, response, Response } from "express";
 import Checkin from "./CheckinUseCase";
 import Checkout from "./CheckoutUseCase";
 import GetParkedCars from "./GetParkedCarsUseCase";
-import ParkedCarDatabaseRepository from "./ParkedCarDatabaseRepositoryAdapter";
+import ParkedCarDatabaseRepositoryAdapter from "./ParkedCarDatabaseRepositoryAdapter";
 import PostgreSQLAdapter from "./PostgreSQLAdapter";
 const app = express();
 app.use(express.json());
-const connection = new PostgreSQLAdapter();
-const parkedCarRepository = new ParkedCarDatabaseRepository(connection);
+const db = new PostgreSQLAdapter();
+const parkedCarRepository = new ParkedCarDatabaseRepositoryAdapter(db);
 app.post("/checkin", async function (request: Request, response: Response) {
 	const checkin = new Checkin(parkedCarRepository);
 	await checkin.execute({ plate: request.body.plate, checkinDate: request.body.checkinDate });
