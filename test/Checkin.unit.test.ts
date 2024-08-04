@@ -1,13 +1,13 @@
-import Checkin from "../src/Checkin";
-import Checkout from "../src/Checkout";
-import GetParkedCars from "../src/GetParkedCars";
-import ParkedCarDatabaseRepository from "../src/ParkedCarDatabaseRepository";
-import ParkedCarMemoryRepository from "../src/ParkedCarMemoryRepository";
+import Checkin from "../src/CheckinUseCase";
+import Checkout from "../src/CheckoutUseCase";
+import GetParkedCars from "../src/GetParkedCarsUseCase";
+import ParkedCarDatabaseRepositoryAdapter from "../src/ParkedCarDatabaseRepositoryAdapter";
+import ParkedCarMemoryRepository from "../src/ParkedCarMemoryRepositoryAdapter";
 import PostgreSQLAdapter from "../src/PostgreSQLAdapter";
 
 test("Deve fazer um checkin", async function () {
 	const connection = new PostgreSQLAdapter();
-	const parkedCarRepository = new ParkedCarDatabaseRepository(connection);
+	const parkedCarRepository = new ParkedCarDatabaseRepositoryAdapter(connection);
 	// const parkedCarRepository = new ParkedCarMemoryRepository();
 	const checkin = new Checkin(parkedCarRepository);
 	const inputCheckin = {

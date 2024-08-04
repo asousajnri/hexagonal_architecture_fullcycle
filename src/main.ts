@@ -1,8 +1,8 @@
 import express, { Request, response, Response } from "express";
-import Checkin from "./Checkin";
-import Checkout from "./Checkout";
-import GetParkedCars from "./GetParkedCars";
-import ParkedCarDatabaseRepository from "./ParkedCarDatabaseRepository";
+import Checkin from "./CheckinUseCase";
+import Checkout from "./CheckoutUseCase";
+import GetParkedCars from "./GetParkedCarsUseCase";
+import ParkedCarDatabaseRepository from "./ParkedCarDatabaseRepositoryAdapter";
 import PostgreSQLAdapter from "./PostgreSQLAdapter";
 const app = express();
 app.use(express.json());

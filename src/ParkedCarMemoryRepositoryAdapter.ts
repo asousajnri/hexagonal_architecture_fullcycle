@@ -1,7 +1,7 @@
-import ParkedCar from "./ParkedCar";
-import ParkedCarRepository from "./ParkedCarRepository";
+import ParkedCar from "./ParkedCarDomain";
+import ParkedCarRepositoryPort from "./ParkedCarRepositoryPort";
 
-export default class ParkedCarMemoryRepository implements ParkedCarRepository {
+export default class ParkedCarMemoryRepository implements ParkedCarRepositoryPort {
 	parkedCars: ParkedCar[];
 
 	constructor () {

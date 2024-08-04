@@ -1,4 +1,4 @@
-import ParkedCar from "../src/ParkedCar"
+import ParkedCar from "../src/ParkedCarDomain"
 
 test("Deve fazer um checkout", function () {
 	const parkedCar = new ParkedCar("AAA-9999", new Date("2022-03-01T10:00:00"));

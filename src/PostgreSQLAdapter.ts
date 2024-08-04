@@ -1,11 +1,11 @@
-import Connection from "./Connection";
+import ConnectionPort from "./ConnectionPort";
 import pgp from "pg-promise";
 
-export default class PostgreSQLAdapter implements Connection {
+export default class PostgreSQLAdapter implements ConnectionPort {
 	connection: any;
 
 	constructor () {
-		this.connection = pgp()("postgres://postgres:123456@localhost:5432/app");
+		this.connection = pgp()("postgres://postgres:postgres@localhost:5032/ports_adapters_branas");
 	}
 
 	query(statement: string, params: any): Promise<any> {

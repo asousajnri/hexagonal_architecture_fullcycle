@@ -1,15 +1,15 @@
 import pgp from "pg-promise";
-import ParkedCarRepository from "./ParkedCarRepository";
+import parkedCarRepositoryPort from "./ParkedCarRepositoryPort";
 
 export default class Checkout {
 
-	constructor (readonly parkedCarRepository: ParkedCarRepository) {
+	constructor (readonly parkedCarRepositoryAdapter: parkedCarRepositoryPort) {
 	}
 
 	async execute (input: Input): Promise<Output> {
-		const parkedCar = await this.parkedCarRepository.get(input.plate);
+		const parkedCar = await this.parkedCarRepositoryAdapter.get(input.plate);
 		parkedCar.checkout(input.checkoutDate);
-		await this.parkedCarRepository.update(parkedCar);
+		await this.parkedCarRepositoryAdapter.update(parkedCar);
 		return {
 			price: parkedCar.price,
 			period: parkedCar.diff
